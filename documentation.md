@@ -53,7 +53,7 @@ The Brightway project repository structure is already set up to work with RTD. S
 
 ### `autoapi` Extension
 
-The `autoapi` extension is a Sphinx extension that automatically generates API documentation from your Python source code. This is particularly useful for documenting functions, classes, and methods in your codebase.
+The [`autoapi` extension](https://github.com/readthedocs/sphinx-autoapi) is a Sphinx extension that automatically generates API documentation from your Python source code. This is particularly useful for documenting functions, classes, and methods in your codebase.
 
 > [!WARNING]
 > [At the moment](https://github.com/readthedocs/sphinx-autoapi/issues/287), the `autoapi` extension does not support Markdown. This means that you must write your API documentation in ReStructuredText (RST).
@@ -71,6 +71,45 @@ The `autoapi` extension is a Sphinx extension that automatically generates API d
 > | Apricot   | Coconut   |
 > +-----------+-----------+
 > ```
+
+You can configure the `autoapi` extension by setting options in the `conf.py` file. Many extensions have important configuration options that you need to set before using it. The `autoapi` extension [lists these options in the package documentation](https://sphinx-autoapi.readthedocs.io/en/latest/reference/index.html).
+
+The following settings are already set in the Brightway project template:
+
+```python
+## autoapi configuration ################################################
+## https://sphinx-autoapi.readthedocs.io/en/latest/reference/config.html#customisation-options
+
+autoapi_options = [
+    'members',
+    'undoc-members',
+    'private-members',
+    'show-inheritance',
+    'show-module-summary',
+]
+
+autoapi_python_class_content = 'both'
+autoapi_member_order = 'groupwise'
+autoapi_root = 'content/api'
+autoapi_keep_files = False
+
+autoapi_dirs = [
+    '../testbw',
+]
+
+autoapi_ignore = [
+    '*/data/*',
+    '*tests/*',
+    '*tests.py',
+    '*validation.py',
+    '*version.py',
+    '*.rst',
+    '*.yml',
+    '*.md',
+    '*.json',
+    '*.data'
+]
+```
 
 ### `intersphinx` Linking
 
