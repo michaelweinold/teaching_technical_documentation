@@ -1,2 +1,1 @@
-# teaching_technical_documentation
- 
+# Teaching Materials on Technical Documentation
