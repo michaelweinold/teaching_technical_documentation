@@ -18,7 +18,7 @@ For inspiration on how you can structure your documentation, you can have a look
 
 ## Site Syntax (Markdown/MyST and ReStructuredText)
 
-
+The Brightway project template is set up to use [MyST Markdown](https://myst-parser.readthedocs.io/en/latest/index.html) as the default syntax for documentation files. This is a superset of the standard Markdown syntax, which allows you to write more complex documents. For details on the syntax, see [the `myst-parser` package documentation](https://myst-parser.readthedocs.io/en/latest/).
 
 ## Build Process
 
@@ -72,6 +72,13 @@ The [`autoapi` extension](https://github.com/readthedocs/sphinx-autoapi) is a Sp
 > +-----------+-----------+
 > ```
 
+> [!WARNING]
+> At the moment, the Brightway project template is set up with [the NumPy docstring style](https://numpydoc.readthedocs.io/en/latest/format.html) as default. This is defined in the `conf.py` file (the core Sphinx extension supporting this [is called `napoleon`](https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html)):
+> 
+> ```python
+> napoleon_numpy_docstring = True
+> ```
+
 You can configure the `autoapi` extension by setting options in the `conf.py` file. Many extensions have important configuration options that you need to set before using it. The `autoapi` extension [lists these options in the package documentation](https://sphinx-autoapi.readthedocs.io/en/latest/reference/index.html).
 
 The following settings are already set in the Brightway project template:
@@ -111,6 +118,20 @@ autoapi_ignore = [
 ]
 ```
 
+You can link to functions in the auto-generated API documentation using the following syntax:
+
+```
+{py:obj}`mypackage.<submodule>.<function>`
+```
+
+For instance:
+
+```
+{py:obj}`mypackage.dataframes.update_production_based_on_user_data`
+```
+
+update_production_based_on_user_data
+
 ### `intersphinx` Linking
 
 What if you are using a `bw2data` function in your code, and you want to link to the relevant `bw2data` documentation? This would help your users understand what the function does, and how to use it. Fortunately, Sphinx has [a core feature called `intersphinx`](https://docs.readthedocs.io/en/stable/guides/intersphinx.html) that allows you to link to external documentation:
@@ -122,6 +143,12 @@ What if you are using a `bw2data` function in your code, and you want to link to
 
 ```
 [Installation Page](inv:bw#content/installation/index)
+```
+
+or to sections:
+
+```
+[Installing Page, Section `pip`](<inv:bw#installing-pip>)
 ```
 
 or to functions in the auto-generated API documentation:
