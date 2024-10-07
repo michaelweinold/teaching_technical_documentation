@@ -101,6 +101,13 @@ def update_production_based_on_user_data(df: pd.DataFrame) -> pd.DataFrame:
 
     In this case, the function takes the 'production_user' value of node 4, not of node 1.
 
+    Notes
+    -----
+
+    This function is used only to illustrate the use of 
+    the `Sphinx documentation generator <https://en.wikipedia.org/wiki/Sphinx_(documentation_generator)>`_
+    in documenting Python code.
+
     See Also
     --------
     create_sample_dataframe: Create a sample DataFrame for use in this function.
